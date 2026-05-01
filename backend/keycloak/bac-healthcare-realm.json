@@ -1,0 +1,97 @@
+{
+  "realm": "bac-healthcare",
+  "displayName": "BAC Healthcare",
+  "enabled": true,
+  "sslRequired": "external",
+  "registrationAllowed": false,
+  "rememberMe": true,
+  "loginWithEmailAllowed": true,
+  "loginTheme": "bac",
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": true,
+  "editUsernameAllowed": false,
+  "bruteForceProtected": true,
+  "permanentLockout": false,
+  "maxFailureWaitSeconds": 900,
+  "minimumQuickLoginWaitSeconds": 60,
+  "waitIncrementSeconds": 60,
+  "quickLoginCheckMilliSeconds": 1000,
+  "maxDeltaTimeSeconds": 43200,
+  "failureFactor": 30,
+  "passwordPolicy": "length(12) and digits(1) and specialChars(1) and upperCase(1)",
+  "accessTokenLifespan": 300,
+  "ssoSessionIdleTimeout": 1800,
+  "ssoSessionMaxLifespan": 36000,
+  "offlineSessionIdleTimeout": 2592000,
+  "roles": {
+    "realm": [
+      {
+        "name": "SYSTEM_ADMIN",
+        "description": "Full system access",
+        "composite": false,
+        "clientRole": false
+      },
+      {
+        "name": "OFFICE_MANAGER",
+        "description": "Manages staff and patient records",
+        "composite": false,
+        "clientRole": false
+      },
+      {
+        "name": "FINANCE_ADMIN",
+        "description": "Manages billing and claims",
+        "composite": false,
+        "clientRole": false
+      },
+      {
+        "name": "DSP",
+        "description": "Direct Support Professional / Caregiver",
+        "composite": false,
+        "clientRole": false
+      },
+      {
+        "name": "AUDIT_INSPECTOR",
+        "description": "External compliance reviewer",
+        "composite": false,
+        "clientRole": false
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "bac",
+      "name": "BAC App",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "protocol": "openid-connect",
+      "redirectUris": ["http://localhost:4200/*"],
+      "webOrigins": ["http://localhost:4200"],
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      },
+      "fullScopeAllowed": true
+    }
+  ],
+  "requiredActions": [
+    {
+      "alias": "UPDATE_PROFILE",
+      "name": "Update Profile",
+      "providerId": "UPDATE_PROFILE",
+      "enabled": true,
+      "defaultAction": false
+    }
+  ],
+  "defaultRoles": [],
+  "requiredCredentials": ["password"],
+  "otpPolicyType": "totp",
+  "otpPolicyAlgorithm": "HmacSHA1",
+  "otpPolicyInitialCounter": 0,
+  "otpPolicyDigits": 6,
+  "otpPolicyLookAheadWindow": 1,
+  "otpPolicyPeriod": 30,
+  "smtpServer": {}
+}

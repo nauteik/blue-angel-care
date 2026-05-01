@@ -24,7 +24,21 @@ spring:
       port: ${REDIS_PORT}
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_ISSUER_URI}
+  threads:
+    virtual:
+      enabled: true
 
+keycloak:
+  base-url: ${KEYCLOAK_BASE_URL}
+  realm: bac-healthcare
+  admin:
+    username: ${KC_ADMIN_USER}
+    password: ${KC_ADMIN_PASSWORD}
 server:
   port: 8080
   shutdown: graceful
